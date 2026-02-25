@@ -11,13 +11,16 @@ interface ProjectProps {
 export function ProjectCard({ title, desc, tags, link }: ProjectProps) {
   return (
     <motion.article
-      whileHover={{ y: -3 }}
+      whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="group relative h-full flex flex-col rounded-xl border border-border bg-card/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-md hover:border-primary/25 transition-all duration-300"
+      className="group relative h-full flex flex-col rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 pl-7 shadow-md hover:shadow-xl hover:shadow-primary/10 hover:border-primary/25 transition-all duration-300 overflow-hidden"
     >
-      <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+      {/* Left accent bar */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/50 via-primary to-primary/50 opacity-70 group-hover:opacity-100 transition-opacity rounded-l-2xl" />
+
+      <div className="flex flex-1 flex-col relative">
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <h3 className="font-display text-lg font-bold text-foreground leading-tight pr-2 group-hover:text-primary/90 transition-colors">
             {title}
           </h3>
           {link && (
@@ -25,21 +28,23 @@ export function ProjectCard({ title, desc, tags, link }: ProjectProps) {
               href={link}
               target="_blank"
               rel="noreferrer"
-              className="flex-shrink-0 p-1.5 rounded-md text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer"
-              aria-label="GitHub"
+              className="flex-shrink-0 p-2.5 rounded-xl text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
+              aria-label={`View ${title} on GitHub`}
             >
-              <Github size={16} />
+              <Github size={20} />
             </a>
           )}
         </div>
-        <p className="text-muted-foreground text-xs leading-relaxed mb-3 line-clamp-3">
+
+        <p className="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
           {desc}
         </p>
-        <div className="flex flex-wrap gap-1">
+
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-[10px] font-medium text-primary/90 bg-primary/10 rounded border border-primary/20"
+              className="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-semibold border border-primary/20 hover:bg-primary/15 hover:border-primary/30 transition-colors duration-200"
             >
               {tag}
             </span>
