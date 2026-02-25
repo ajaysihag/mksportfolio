@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Theme variables: controlled by .dark on html so Tailwind utilities pick them up */
+/* Primary: navy blue */
+:root {
+  --theme-background: hsl(0 0% 98%);
+  --theme-foreground: hsl(222 25% 12%);
+  --theme-card: hsl(0 0% 100% / 0.9);
+  --theme-card-foreground: hsl(222 25% 12%);
+  --theme-primary: hsl(221 73% 42%);
+  --theme-primary-foreground: hsl(0 0% 100%);
+  --theme-secondary: hsl(222 15% 92%);
+  --theme-secondary-foreground: hsl(222 25% 12%);
+  --theme-muted: hsl(222 12% 95%);
+  --theme-muted-foreground: hsl(222 12% 40%);
+  --theme-accent: hsl(221 50% 94%);
+  --theme-accent-foreground: hsl(221 73% 35%);
+  --theme-border: hsl(222 12% 90%);
+  --theme-input: hsl(222 12% 90%);
+  --theme-ring: hsl(221 73% 42%);
+}
+
+.dark {
+  --theme-background: hsl(222 25% 11%);
+  --theme-foreground: hsl(222 15% 95%);
+  --theme-card: hsl(222 22% 15% / 0.95);
+  --theme-card-foreground: hsl(222 15% 95%);
+  --theme-primary: hsl(221 70% 52%);
+  --theme-primary-foreground: hsl(0 0% 100%);
+  --theme-secondary: hsl(222 20% 20%);
+  --theme-secondary-foreground: hsl(222 15% 95%);
+  --theme-muted: hsl(222 20% 20%);
+  --theme-muted-foreground: hsl(222 12% 62%);
+  --theme-accent: hsl(221 60% 40% / 0.25);
+  --theme-accent-foreground: hsl(221 80% 68%);
+  --theme-border: hsl(222 18% 24%);
+  --theme-input: hsl(222 18% 24%);
+  --theme-ring: hsl(221 70% 52%);
+}
+
+@theme inline {
+  --color-background: var(--theme-background);
+  --color-foreground: var(--theme-foreground);
+  --color-card: var(--theme-card);
+  --color-card-foreground: var(--theme-card-foreground);
+  --color-primary: var(--theme-primary);
+  --color-primary-foreground: var(--theme-primary-foreground);
+  --color-secondary: var(--theme-secondary);
+  --color-secondary-foreground: var(--theme-secondary-foreground);
+  --color-muted: var(--theme-muted);
+  --color-muted-foreground: var(--theme-muted-foreground);
+  --color-accent: var(--theme-accent);
+  --color-accent-foreground: var(--theme-accent-foreground);
+  --color-border: var(--theme-border);
+  --color-input: var(--theme-input);
+  --color-ring: var(--theme-ring);
+  --radius: 0.75rem;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-body antialiased bg-background text-foreground selection:bg-primary/10 selection:text-primary;
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    @apply bg-card/80 backdrop-blur-xl border border-border shadow-lg;
+  }
+  .dark .glass-nav {
+    @apply bg-card/90 border-border;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-border shadow-sm hover:shadow-xl transition-all duration-500;
+  }
+
+  .stack-card {
+    @apply relative overflow-hidden bg-card/70 backdrop-blur-xl border border-border p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 transition-all duration-700 ring-1 ring-border/50;
+  }
+
+  .stack-card-glow {
+    @apply absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-all duration-700;
+  }
+
+  .skill-tag {
+    @apply px-4 py-2 rounded-2xl bg-card border border-border text-sm text-muted-foreground font-semibold shadow-sm hover:text-primary hover:border-primary/40 hover:bg-primary/5 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-pointer flex items-center gap-2;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-foreground via-foreground/90 to-muted-foreground;
+  }
+  .dark .text-gradient {
+    @apply from-foreground via-foreground to-muted-foreground;
+  }
+
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
