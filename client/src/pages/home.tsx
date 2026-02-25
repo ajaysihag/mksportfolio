@@ -666,7 +666,7 @@ export default function Home() {
             <a href="https://linkedin.com/in/mukeshsihag" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
-            <a href="https://github.com/mukeshsihag" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer" aria-label="GitHub">
+            <a href="https://www.linkedin.com/in/itismukesh/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer" aria-label="GitHub">
               <Github size={20} />
             </a>
           </div>
